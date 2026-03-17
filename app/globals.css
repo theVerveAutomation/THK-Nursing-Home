@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Light theme with electric blue accent */
+    --background: 0 0% 100%;
+    --foreground: 220 30% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 15%;
+
+    --primary: 208 85% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 20% 95%;
+    --secondary-foreground: 220 30% 15%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 220 15% 45%;
+
+    --accent: 208 85% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 90%;
+    --input: 220 20% 96%;
+    --ring: 208 85% 45%;
+
+    --radius: 0.75rem;
+
+    /* Glow effects */
+    --glow-primary: 208 85% 45%;
+    --glow-subtle: 208 60% 70%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 20% 99%) 100%);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    /* Dark theme with electric blue accent inspired by VAP logo */
+    --background: 220 35% 6%;
+    --foreground: 210 25% 95%;
+
+    --card: 220 30% 10%;
+    --card-foreground: 210 25% 95%;
+
+    --popover: 220 30% 10%;
+    --popover-foreground: 210 25% 95%;
+
+    --primary: 208 85% 45%;
+    --primary-foreground: 210 25% 98%;
+
+    --secondary: 220 25% 15%;
+    --secondary-foreground: 210 25% 95%;
+
+    --muted: 220 20% 18%;
+    --muted-foreground: 210 15% 65%;
+
+    --accent: 208 85% 45%;
+    --accent-foreground: 210 25% 98%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 210 25% 98%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 18%;
+    --ring: 208 85% 45%;
+
+    /* Glow effects */
+    --glow-primary: 208 85% 45%;
+    --glow-subtle: 208 60% 30%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(220 35% 6%) 0%, hsl(220 30% 10%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(220 30% 10%) 0%, hsl(220 28% 9%) 100%);
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
