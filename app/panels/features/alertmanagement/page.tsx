@@ -292,96 +292,14 @@ export default function AlertsPage() {
   ]);
 
   const getColorClasses = (color: string) => {
-    switch (color) {
-      case "red":
-        return {
-          bg: "bg-slate-50 dark:bg-slate-700/40",
-          icon: "text-slate-700 dark:text-slate-300",
-          border: "border-slate-200 dark:border-slate-600",
-          badge: "bg-slate-700",
-          header: "from-slate-700 to-slate-800",
-        };
-      case "orange":
-        return {
-          bg: "bg-slate-50 dark:bg-slate-700/40",
-          icon: "text-slate-700 dark:text-slate-300",
-          border: "border-slate-200 dark:border-slate-600",
-          badge: "bg-slate-700",
-          header: "from-slate-700 to-slate-800",
-        };
-      case "cyan":
-        return {
-          bg: "bg-slate-50 dark:bg-slate-700/40",
-          icon: "text-slate-700 dark:text-slate-300",
-          border: "border-slate-200 dark:border-slate-600",
-          badge: "bg-slate-700",
-          header: "from-slate-700 to-slate-800",
-        };
-      case "purple":
-        return {
-          bg: "bg-slate-50 dark:bg-slate-700/40",
-          icon: "text-slate-700 dark:text-slate-300",
-          border: "border-slate-200 dark:border-slate-600",
-          badge: "bg-slate-700",
-          header: "from-slate-700 to-slate-800",
-        };
-      case "amber":
-        return {
-          bg: "bg-slate-50 dark:bg-slate-700/40",
-          icon: "text-slate-700 dark:text-slate-300",
-          border: "border-slate-200 dark:border-slate-600",
-          badge: "bg-slate-700",
-          header: "from-slate-700 to-slate-800",
-        };
-      case "yellow":
-        return {
-          bg: "bg-slate-50 dark:bg-slate-700/40",
-          icon: "text-slate-700 dark:text-slate-300",
-          border: "border-slate-200 dark:border-slate-600",
-          badge: "bg-slate-700",
-          header: "from-slate-700 to-slate-800",
-        };
-      case "teal":
-        return {
-          bg: "bg-slate-50 dark:bg-slate-700/40",
-          icon: "text-slate-700 dark:text-slate-300",
-          border: "border-slate-200 dark:border-slate-600",
-          badge: "bg-slate-700",
-          header: "from-slate-700 to-slate-800",
-        };
-      case "rose":
-        return {
-          bg: "bg-slate-50 dark:bg-slate-700/40",
-          icon: "text-slate-700 dark:text-slate-300",
-          border: "border-slate-200 dark:border-slate-600",
-          badge: "bg-slate-700",
-          header: "from-slate-700 to-slate-800",
-        };
-      case "indigo":
-        return {
-          bg: "bg-slate-50 dark:bg-slate-700/40",
-          icon: "text-slate-700 dark:text-slate-300",
-          border: "border-slate-200 dark:border-slate-600",
-          badge: "bg-slate-700",
-          header: "from-slate-700 to-slate-800",
-        };
-      case "sky":
-        return {
-          bg: "bg-slate-50 dark:bg-slate-700/40",
-          icon: "text-slate-700 dark:text-slate-300",
-          border: "border-slate-200 dark:border-slate-600",
-          badge: "bg-slate-700",
-          header: "from-slate-700 to-slate-800",
-        };
-      default:
-        return {
-          bg: "bg-gray-100 dark:bg-slate-700",
-          icon: "text-gray-600 dark:text-gray-400",
-          border: "border-gray-200 dark:border-slate-600",
-          badge: "bg-gray-500",
-          header: "from-gray-500 to-slate-600",
-        };
-    }
+    // Use unified blue styling for all alert cards
+    return {
+      bg: "bg-blue-50 dark:bg-blue-900/30",
+      icon: "text-blue-600 dark:text-blue-400",
+      border: "border-blue-200 dark:border-blue-700",
+      badge: "bg-blue-600",
+      header: "from-blue-600 to-blue-700",
+    };
   };
 
   const totalAlerts = featureAlerts.reduce((sum, f) => sum + f.alertCount, 0);
@@ -411,7 +329,7 @@ export default function AlertsPage() {
       {/* Hero Section */}
       <div className="mb-6">
         <div className="flex items-center gap-3 mb-3">
-          <div className="w-12 h-12 bg-slate-700 rounded-xl flex items-center justify-center shadow-lg">
+          <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center shadow-lg">
             <Bell className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -444,10 +362,10 @@ export default function AlertsPage() {
 
       {/* Push Notifications Section */}
       {pushNotifications.length > 0 && (
-        <div className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 p-6 shadow-lg">
+        <div className="bg-white-50 dark:bg-blue-900/30 rounded-2xl borde dark:border-blue-700 p-6 shadow-lg">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-slate-700 rounded-xl flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg">
                 <Bell className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -461,16 +379,16 @@ export default function AlertsPage() {
             </div>
             <div className="flex items-center gap-3">
               <div className="text-right">
-                <p className="text-2xl font-bold text-slate-700 dark:text-slate-300">
+                <p className="text-2xl font-bold text-blue-700 dark:text-blue-300">
                   {pushNotifications.length}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
+                <p className="text-xs text-blue-600 dark:text-blue-300">
                   Active
                 </p>
               </div>
               <button
                 onClick={clearAllNotifications}
-                className="px-3 py-2 bg-slate-700 hover:bg-slate-800 text-white rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
+                className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
               >
                 <Trash2 className="w-4 h-4" />
                 Clear All
@@ -482,11 +400,11 @@ export default function AlertsPage() {
             {pushNotifications.slice(0, 10).map((notification, index) => (
               <div
                 key={index}
-                className="bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-xl p-4 transition-all hover:shadow-md"
+                className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-xl p-4 transition-all hover:shadow-md"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-3 flex-1">
-                    <div className="w-8 h-8 bg-slate-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
                       <AlertTriangle className="w-4 h-4 text-white" />
                     </div>
                     <div className="flex-1">
@@ -494,7 +412,7 @@ export default function AlertsPage() {
                         <h4 className="font-semibold text-slate-900 dark:text-slate-100">
                           {getNotificationTitle(notification.type)}
                         </h4>
-                        <span className="px-2 py-0.5 bg-slate-600 text-white text-xs rounded-full">
+                        <span className="px-2 py-0.5 bg-blue-600 text-white text-xs rounded-full">
                           {notification.type}
                         </span>
                       </div>
@@ -520,7 +438,7 @@ export default function AlertsPage() {
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => clearNotification(index)}
-                      className="p-1.5 bg-slate-200 hover:bg-slate-300 dark:bg-slate-600 dark:hover:bg-slate-500 text-slate-700 dark:text-slate-200 rounded-lg transition-colors"
+                      className="p-1.5 bg-blue-100 hover:bg-blue-200 dark:bg-blue-800 dark:hover:bg-blue-700 text-blue-700 dark:text-white rounded-lg transition-colors"
                     >
                       <X className="w-4 h-4" />
                     </button>

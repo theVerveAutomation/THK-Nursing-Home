@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import {
   Image as ImageIcon,
@@ -22,9 +22,10 @@ import {
   FolderOpen,
   ArrowLeft,
 } from "lucide-react";
-// import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "@/lib/supabaseClient";
 // import { Profile, CameraConfig, Snapshot, CameraFolder } from "@/types";
 import Image from "next/image";
+import { CameraFolder, Snapshot } from "@/types";
 
 // Camera folder with snapshot count
 
@@ -34,9 +35,11 @@ export default function SnapshotPage() {
   // MOCK DATA
   const [loading, setLoading] = useState(false);
   const [cameras] = useState([
-    { id: 1, name: "Cam 1 - Main Lobby", status: "normal" },
-    { id: 2, name: "Cam 2 - Corridor B", status: "warning" },
-    { id: 3, name: "Cam 3 - Warehouse", status: "normal" },
+    { id: 1, name: "Camera 1", status: "online" },
+    { id: 2, name: "Camera 2", status: "online" },
+    { id: 3, name: "Camera 3", status: "online" },
+    { id: 4, name: "Camera 4", status: "offline" },
+    { id: 5, name: "Camera 5", status: "online" },
   ]);
   const [snapshots, setSnapshots] = useState([
     {
@@ -75,7 +78,7 @@ export default function SnapshotPage() {
 
   // Selected folder for details panel (folders view)
   const [selectedFolder, setSelectedFolder] = useState<CameraFolder | null>(
-    null
+    null,
   );
 
   // Filters (only for snapshots view)
@@ -84,7 +87,7 @@ export default function SnapshotPage() {
 
   // Preview
   const [selectedSnapshot, setSelectedSnapshot] = useState<Snapshot | null>(
-    null
+    null,
   );
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
@@ -98,11 +101,11 @@ export default function SnapshotPage() {
   const cameraFolders: CameraFolder[] = useMemo(() => {
     return cameras.map((camera) => {
       const cameraSnapshots = snapshots.filter(
-        (s) => s.camera_id === camera.id
+        (s) => s.camera_id === camera.id,
       );
       const latestSnapshot = cameraSnapshots.sort(
         (a, b) =>
-          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
       )[0];
 
       return {
@@ -125,7 +128,7 @@ export default function SnapshotPage() {
       filtered = filtered.filter(
         (s) =>
           s.camera_name.toLowerCase().includes(query) ||
-          s.created_at.toLowerCase().includes(query)
+          s.created_at.toLowerCase().includes(query),
       );
     }
 
@@ -137,7 +140,7 @@ export default function SnapshotPage() {
     // Sort by date (newest first)
     return filtered.sort(
       (a, b) =>
-        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
     );
   }, [snapshots, selectedCameraId, searchQuery, dateFilter]);
 
@@ -164,7 +167,7 @@ export default function SnapshotPage() {
   const totalPages = Math.ceil(filteredSnapshots.length / snapshotsPerPage);
   const paginatedSnapshots = filteredSnapshots.slice(
     (currentPage - 1) * snapshotsPerPage,
-    currentPage * snapshotsPerPage
+    currentPage * snapshotsPerPage,
   );
 
   // Open camera folder
@@ -405,7 +408,7 @@ export default function SnapshotPage() {
                         <p className="text-white text-xs flex items-center gap-1">
                           <Clock className="w-3 h-3" />
                           {formatDateTime(
-                            selectedFolder.latestSnapshot.created_at
+                            selectedFolder.latestSnapshot.created_at,
                           )}
                         </p>
                       </div>
@@ -443,7 +446,7 @@ export default function SnapshotPage() {
                         </span>
                         <span className="text-gray-800 dark:text-white font-medium text-right">
                           {formatDateTime(
-                            selectedFolder.latestSnapshot.created_at
+                            selectedFolder.latestSnapshot.created_at,
                           )}
                         </span>
                       </div>
@@ -457,8 +460,8 @@ export default function SnapshotPage() {
                           selectedFolder.camera.status === "normal"
                             ? "text-green-600 dark:text-green-400"
                             : selectedFolder.camera.status === "warning"
-                            ? "text-amber-600 dark:text-amber-400"
-                            : "text-gray-500 dark:text-gray-400"
+                              ? "text-amber-600 dark:text-amber-400"
+                              : "text-gray-500 dark:text-gray-400"
                         }`}
                       >
                         {selectedFolder.camera.status}

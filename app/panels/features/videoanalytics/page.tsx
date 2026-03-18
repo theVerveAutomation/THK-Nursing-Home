@@ -270,6 +270,7 @@ export default function VideoAnalyticsPage() {
     disableMouse = true,
     controls = false,
     enableNotifications = false,
+    fit = "cover",
   }: {
     videoSrc: string;
     className?: string;
@@ -277,6 +278,7 @@ export default function VideoAnalyticsPage() {
     disableMouse?: boolean;
     controls?: boolean;
     enableNotifications?: boolean;
+    fit?: "cover" | "contain";
   }) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const triggeredNotificationsRef = useRef<Set<string>>(new Set());
@@ -348,7 +350,7 @@ export default function VideoAnalyticsPage() {
       <video
         ref={videoRef}
         src={videoSrc}
-        className={`w-full h-full object-cover ${className}`}
+        className={`w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} ${className}`}
         autoPlay={autoPlay}
         muted
         loop
@@ -637,6 +639,11 @@ export default function VideoAnalyticsPage() {
                         controls={camera.id === selectedCamera}
                         disableMouse={camera.id !== selectedCamera}
                         enableNotifications={selectedCamera === camera.id}
+                        fit={
+                          camera.id === "video_3" || camera.name === "Camera 3"
+                            ? "contain"
+                            : "cover"
+                        }
                       />
                     ) : (
                       <CameraFeed
@@ -708,6 +715,11 @@ export default function VideoAnalyticsPage() {
                         autoPlay={false}
                         controls={false}
                         disableMouse
+                        fit={
+                          camera.id === "video_3" || camera.name === "Camera 3"
+                            ? "contain"
+                            : "cover"
+                        }
                       />
                     ) : (
                       <CameraFeed

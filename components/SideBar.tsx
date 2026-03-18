@@ -280,7 +280,7 @@ export default function Sidebar({
           <Users className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
           <span className="truncate">User Management</span>
         </button>
-        {/* <button
+        <button
           onClick={() => router.push("/panels/features/snapshots")}
           className={`w-full flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-semibold text-sm sm:text-base transition-all duration-200
               ${
@@ -291,7 +291,7 @@ export default function Sidebar({
         >
           <CameraIcon className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
           <span className="truncate">Snapshots</span>
-        </button> */}
+        </button>
       </nav>
 
       {/* Profile Section */}
